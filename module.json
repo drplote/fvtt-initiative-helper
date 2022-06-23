@@ -8,13 +8,14 @@
 	"author": "Sterno",
 	"authors": [{
 		"name": "Sterno",
-		"discord": "Sterno#8208",
+		"discord": "Sterno#8208"
     }],
 	"esmodules": [
-		"initiativeHelper.js"
+		"initiativehelper.js",
+		"module/settings.js"
 	],
 	"styles": [
-		"css/initiativeHelper.css"
+		"css/initiative-helper.css"
 	],
 	"packs": [],
 	"languages": [

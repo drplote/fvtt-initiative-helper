@@ -38,7 +38,7 @@
     text-align:center;
 }
 
-#initiativehelper-hp {
+#initiativehelper-init {
     width: 75px;
     text-align: center;
     background: url(../../../ui/parchment.jpg) repeat;
@@ -58,6 +58,31 @@
     display: inline-block;
     vertical-align: top;
     cursor:pointer;
+    color: green;
+}
+
+.death-savingthrow {
+    display: none;
+    width: 40px;
+}
+
+.death-savingthrow > div {
+    width: 12px;
+    height: 12px;
+    border: 1px solid #808080;
+    background-color: #C0C0C0;
+    border-radius: 100%;
+    display:inline-block;
+}
+
+.death-savingthrow > div.active {
+    border: 1px solid red;
+    background-color: #ff6400;
+}
+
+.death-savingthrow.save > div.active {
+    border: 1px solid #15838d;
+    background-color: rgb(77, 208, 225);
 }
 
 #initiativehelper-btn-fullheal {
@@ -68,25 +93,6 @@
     padding-top:6px;
 }
 
-.bad-ones{
-    
-    border: 1px solid red;
-    border-bottom: 1px solid #ff6400;
-    box-shadow: 0 0 10px #ff6400;
-}
-
-.bad-ones i {
-    color: red;
-}
-
-.good-ones {
-    border: 1px solid rgb(77,208,225);
-    box-shadow: 0 0 10px rgb(77, 208, 225);
-}
-
-.good-ones i {
-    color: rgb(77, 208, 225);
-}
 
 #initiative-helper .window-content {
     background: none;
@@ -172,6 +178,20 @@
     border-radius: 2px;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
+}
+
+#initiative-helper .resource .bar-change {
+    display: none;
+    width: 75px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+#initiative-helper .resource:hover .bar-change {
+    display: inline-block;
 }
 
 #initiative-helper .resource .temp-bar {

@@ -1,4 +1,4 @@
-import { i18n } from "../InitiativeHelper.js";
+import { i18n } from "../initiativehelper.js";
 
 export const registerSettings = function () {
     let modulename = "initiative-helper";
@@ -38,33 +38,6 @@ export const registerSettings = function () {
         onChange: debouncedReload
     });
 
-    game.settings.register(modulename, "resourcename", {
-        name: i18n("INITIATIVEHELPER.resourcename.name"),
-        hint: i18n("INITIATIVEHELPER.resourcename.hint"),
-        scope: "world",
-        default: game.system.data.primaryTokenAttribute || 'attributes.hp',
-        type: String,
-        config: true
-    });
-
-    game.settings.register(modulename, "add-defeated", {
-        name: i18n("INITIATIVEHELPER.add-defeated.name"),
-        hint: i18n("INITIATIVEHELPER.add-defeated.hint"),
-        scope: "world",
-        default: true,
-        type: Boolean,
-        config: true
-    });
-
-    game.settings.register(modulename, "clear-savingthrows", {
-        name: i18n("INITIATIVEHELPER.clear-savingthrows.name"),
-        hint: i18n("INITIATIVEHELPER.clear-savingthrows.hint"),
-        scope: "world",
-        default: true,
-        type: Boolean,
-        config: true
-    });
-
     game.settings.register(modulename, "clear-after-enter", {
         name: i18n("INITIATIVEHELPER.clear-after-enter.name"),
         hint: i18n("INITIATIVEHELPER.clear-after-enter.hint"),
@@ -77,6 +50,15 @@ export const registerSettings = function () {
     game.settings.register(modulename, "double-click", {
         name: i18n("INITIATIVEHELPER.double-click.name"),
         hint: i18n("INITIATIVEHELPER.double-click.hint"),
+        scope: "client",
+        default: false,
+        type: Boolean,
+        config: true
+    });
+
+    game.settings.register(modulename, "allow-bar-click", {
+        name: i18n("INITIATIVEHELPER.allow-bar-click.name"),
+        hint: i18n("INITIATIVEHELPER.allow-bar-click.hint"),
         scope: "client",
         default: false,
         type: Boolean,
