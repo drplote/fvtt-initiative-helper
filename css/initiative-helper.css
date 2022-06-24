@@ -81,12 +81,12 @@
     color: red;
 }
 
-.init-delay {
+.init-normal {
     border: 1px solid rgb(77,208,225);
     box-shadow: 0 0 10px rgb(77, 208, 225);
 }
 
-.init-delay i {
+.init-normal i {
     color: rgb(77, 208, 225);
 }
 
@@ -128,7 +128,6 @@
 #initiative-helper .window-content {
     background: none;
     padding: 2px 0px;
-    border-top: 2px solid #782e22;
 }
 
 #initiative-helper .window-title {
@@ -137,6 +136,10 @@
 
 #initiative-helper .window-header > :not(h4) {
     display: none !important;
+}
+
+#initiative-helper .window-header{
+    border-bottom: none;
 }
 
 #initiative-helper .window-header .character-name {

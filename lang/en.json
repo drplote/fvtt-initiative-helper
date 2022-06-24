@@ -14,18 +14,21 @@
   "INITIATIVEHELPER.show-dialog.hint": "Just in case you'd rather not see the dialog, if you're on a small display",
   "INITIATIVEHELPER.gm-only.name": "GM Only",
   "INITIATIVEHELPER.gm-only.hint": "Only show the dialog for the Gamesmaster",
-  "INITIATIVEHELPER.double-click.name": "Allow Double-Click",
-  "INITIATIVEHELPER.double-click.hint": "Double-clicking the down or up arrows will fully heal or completely drain.  Add this if you can't right click the skull or heart.",
   "INITIATIVEHELPER.clear-after-enter.name": "Clear After Applying",
-  "INITIATIVEHELPER.clear-after-enter.hint": "Clear the text box after apply damage, uncheck this if you still want to keep the last value entered",
+  "INITIATIVEHELPER.clear-after-enter.hint": "Clear the text box after apply the new initiative. Uncheck this if you still want to keep the last value entered",
   "INITIATIVEHELPER.show-option.name": "Window Show Options",
   "INITIATIVEHELPER.show-option.hint": "Change how the Initiative Helper window is shown",
   "INITIATIVEHELPER.load-option.name": "Load Option",
-  "INITIATIVEHELPER.allow-bar-click.name": "Allow Bar Click",
-  "INITIATIVEHELPER.allow-bar-click.hint": "Hover over and click on the HP bar to alter the attribute",
 
   "INITIATIVEHELPER.set-for-group": "Set initiative for all NPCs of same type as selected token(s) that don't already have an initiative",
   "INITIATIVEHELPER.override-for-group": "Set initiative for all NPCs of same type as selected token(s) even if they already have another initiative",
   "INITIATIVEHELPER.short-delay": "Delay initiative by 1",
-  "INITIATIVEHELPER.long-delay": "Delay initiative until after all other combatants"
+  "INITIATIVEHELPER.long-delay": "Delay initiative until after all other combatants",
+  "INITIATIVEHELPER.additional-init": "Queue up an additional initiative value for the selected token(s)",
+  "INITIATIVEHELPER.error-invalid-combat": "There does not seem to be a valid combat for which to set initiative.",
+  "INITIATIVEHELPER.warning-too-early-init": "Set token(s) initiative to a value that's earlier than the current initiative of the combat, meaning the token(s) will not get a turn.",
+  "INITIATIVEHELPER.warning-current-round-init": "Set token(s) initiative to the same value as the current initiative of the combat. Depending on alphabetical sorting, the token(s) may not get a turn.",
+  "INITIATIVEHELPER.error-token-not-in-combat": "Tried to set initiative for a token that isn't in combat.",
+  "INITIATIVEHELPER.error-token-permission": "Tried to set initiative for a token that you do not own.",
+  "INITIATIVEHELPER.warning-no-selected-token": "Can't change initiative because no token is selected."
 }
