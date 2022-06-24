@@ -99,7 +99,7 @@ export class InitiativeHelper extends Application {
         }
     }
 
-    // TODO: update UI if combat tracker changes, probably through combat.apps
+    
     async updateInitiative(token, newInit){
         let combatant = this.getCombatant(token);
         if (!combatant){
@@ -110,6 +110,16 @@ export class InitiativeHelper extends Application {
             ui.notifications.error(i18n("INITIATIVEHELPER.error-token-permission"));
         }
         else{
+            let combat = combatant.combat;
+            if (combat.combatant?.id === combatant.id){
+                // Trying to change the initiative of the current combatant requires special handling.    
+                // TODO: more special handling is needed
+                let lastTurnIndex = combat.turns.length -1;
+                if (combat.turn < lastTurnIndex){
+                    // If there are turns to come after the combatant, we need to move to next turn before changing initiative.
+                    combat.nextTurn();
+                }
+            }
             await combatant.update({initiative: newInit});
         }
     }
@@ -168,6 +178,7 @@ export class InitiativeHelper extends Application {
             $('#initiativehelper-btn-override-group').hide();
             $('#initiativehelper-btn-set-group').hide();
         }    
+        $('#initiativehelper-btn-additional-init').hide(); // Currently not implemented
     }
 
     get getValue() {
@@ -305,12 +316,9 @@ Hooks.on('controlToken', () => {
     game.InitiativeHelper?.refreshSelected();
 });
 
-Hooks.on('updateActor', (actor, data) => {
-    // TODO: this probably doesn't catch combat tracker updates
-    if (canvas.tokens.controlled.length == 1
-        && canvas.tokens.controlled[0]?.actor.id == actor.id) {
-        game.InitiativeHelper?.refreshSelected();
-    }
+Hooks.on('updateCombat', (combat, data) => {
+    game.InitiativeHelper?.refreshSelected();
+
 });
 
 Hooks.on('dragEndInitiativeHelper', (app) => {
