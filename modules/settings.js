@@ -47,31 +47,4 @@ export const registerSettings = function () {
         config: true
     });
 
-    game.settings.register(modulename, "double-click", {
-        name: i18n("INITIATIVEHELPER.double-click.name"),
-        hint: i18n("INITIATIVEHELPER.double-click.hint"),
-        scope: "client",
-        default: false,
-        type: Boolean,
-        config: true
-    });
-
-    game.settings.register(modulename, "allow-bar-click", {
-        name: i18n("INITIATIVEHELPER.allow-bar-click.name"),
-        hint: i18n("INITIATIVEHELPER.allow-bar-click.hint"),
-        scope: "client",
-        default: false,
-        type: Boolean,
-        config: true
-    });
-
-
-    game.settings.register(modulename, "show-dialog", {
-        name: i18n("INITIATIVEHELPER.show-dialog.name"),
-        hint: i18n("INITIATIVEHELPER.show-dialog.hint"),
-        scope: "client",
-        default: true,
-        type: Boolean,
-        config: false
-    });
 }
