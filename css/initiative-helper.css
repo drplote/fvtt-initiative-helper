@@ -58,8 +58,39 @@
     display: inline-block;
     vertical-align: top;
     cursor:pointer;
+}
+
+.unset-init-only {
+    border: 1px solid green;
+    border-bottom: 1px solid green;
+    box-shadow: 0 0 10px green;
+}
+
+.unset-init-only i {
     color: green;
 }
+
+.override-init {
+    border: 1px solid red;
+    border-bottom: 1px solid red;
+    box-shadow: 0 0 10px red;
+}
+
+
+.override-init i {
+    color: red;
+}
+
+.init-delay {
+    border: 1px solid rgb(77,208,225);
+    box-shadow: 0 0 10px rgb(77, 208, 225);
+}
+
+.init-delay i {
+    color: rgb(77, 208, 225);
+}
+
+
 
 .death-savingthrow {
     display: none;

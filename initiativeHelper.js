@@ -263,9 +263,26 @@ export class InitiativeHelper extends Application {
         return change;
     }
 
+    async delayInit(isLongDelay){
+        if (canvas.tokens.controlled.length == 0){
+            return;
+        }
+        else {
+            await Promise.all(canvas.tokens.controlled
+                .filter(t => t.inCombat)
+                .map(t =>{
+                    let oldInit = this.getCurrentInit(t);
+                    if (oldInit){
+                        let newInit = oldInit + 1;
+                        // TODO: handle long delay
+                        this.updateInitiative(t, newInit);
+                    }})
+            );
+        }
+    }
 
 
-    async setGroupInit(){
+    async setGroupInit(shouldOverride){
         if (canvas.tokens.controlled.length == 0){
             return;
         }
@@ -281,10 +298,11 @@ export class InitiativeHelper extends Application {
 
             await Promise.all(
                 canvas.tokens.ownedTokens
-                    .filter(t => t.inCombat && uniqueBaseActorIds.some(id => t.actor.id === id))
+                    .filter(t => t.inCombat)
+                    .filter(t => uniqueBaseActorIds.some(id => t.actor.id === id))
+                    .filter(t => (shouldOverride || canvas.tokens.controlled.some(t2 => t2.id == t.id) || this.getCurrentInit(t) === null))
                     .map(t => this.updateInitiative(t, newInit))
             );
-
         }
     }
 
@@ -293,30 +311,30 @@ export class InitiativeHelper extends Application {
 
         let that = this;
         
-        /*html.find('#initiativehelper-btn-hurt').click(ev => {
+        html.find('#initiativehelper-btn-set-group').click(async ev => {
             ev.preventDefault();
-            log('set character to hurt');
-            let value = this.getValue;
-            if (value.value != '') {
-                value.value = Math.abs(value.value);
-                this.changeHP(value);
-            }
+            await that.setGroupInit(false);
+            that.refreshSelected();
             this.clearInput();
         });
-        html.find('#initiativehelper-btn-heal').click(ev => {
-            ev.preventDefault();
-            log('set character to heal');
-            let value = this.getValue;
-            if (value.value != '') {
-                value.value = -Math.abs(value.value);
-                this.changeHP(value, false);
-            }
-            this.clearInput();
-        });*/
 
-        html.find('#initiativehelper-btn-group').click(async ev => {
+        html.find('#initiativehelper-btn-override-group').click(async ev => {
             ev.preventDefault();
-            await that.setGroupInit();
+            await that.setGroupInit(true);
+            that.refreshSelected();
+            this.clearInput();
+        });
+
+        html.find('#initiativehelper-btn-short-delay').click(async ev => {
+            ev.preventDefault();
+            await that.delayInit(false);
+            that.refreshSelected();
+            this.clearInput();
+        });
+
+        html.find('#initiativehelper-btn-long-delay').click(async ev => {
+            ev.preventDefault();
+            await that.delayInit(true);
             that.refreshSelected();
             this.clearInput();
         });
@@ -343,24 +361,6 @@ export class InitiativeHelper extends Application {
                     this.clearInput();
                 }
             }
-        });
-
-        
-        html.find('.resource').mousemove(ev => {
-            if (!setting("allow-bar-click"))
-                return;
-            let perc = ev.offsetX / $(ev.currentTarget).width();
-            let change = this.getChangeValue(perc);
-
-            $('.bar-change', html).html(change);
-        }).click(ev => {
-            if (!setting("allow-bar-click"))
-                return;
-            let perc = ev.offsetX / $(ev.currentTarget).width();
-            let change = this.getChangeValue(perc);
-
-            this.changeInit({ value: -change, target: 'regular' });
-            $('.bar-change', html).html('');
         });
     }
 }

@@ -23,5 +23,9 @@
   "INITIATIVEHELPER.load-option.name": "Load Option",
   "INITIATIVEHELPER.allow-bar-click.name": "Allow Bar Click",
   "INITIATIVEHELPER.allow-bar-click.hint": "Hover over and click on the HP bar to alter the attribute",
-  "INITIATIVEHELPER.set-for-group": "Use this initiative for all NPCs of same type as selected token(s)"
+
+  "INITIATIVEHELPER.set-for-group": "Set initiative for all NPCs of same type as selected token(s) that don't already have an initiative",
+  "INITIATIVEHELPER.override-for-group": "Set initiative for all NPCs of same type as selected token(s) even if they already have another initiative",
+  "INITIATIVEHELPER.short-delay": "Delay initiative by 1",
+  "INITIATIVEHELPER.long-delay": "Delay initiative until after all other combatants"
 }
