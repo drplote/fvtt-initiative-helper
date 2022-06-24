@@ -47,4 +47,12 @@ export const registerSettings = function () {
         config: true
     });
 
+    game.settings.register(modulename, "show-dialog", {
+        name: i18n("INITIATIVEHELPER.show-dialog.name"),
+        hint: i18n("INITIATIVEHELPER.show-dialog.hint"),
+        scope: "client",
+        default: true,
+        type: Boolean,
+        config: false
+    });
 }
