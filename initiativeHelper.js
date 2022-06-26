@@ -106,7 +106,7 @@ export class InitiativeHelper extends Application {
             ui.notifications.error(i18n("INITIATIVEHELPER.error-token-not-in-combat"));
             return;
         }
-        else if (!game.user.isGM && token.owner){
+        else if (!game.user.isGM && !token.owner){
             ui.notifications.error(i18n("INITIATIVEHELPER.error-token-permission"));
         }
         else{
@@ -329,7 +329,7 @@ Hooks.on("getSceneControlButtons", (controls) => {
     if (setting("show-option") == 'toggle' && (setting("load-option") == 'everyone' || (setting("load-option") == 'gm' == game.user.isGM))) {
         let tokenControls = controls.find(control => control.name === "token")
         tokenControls.tools.push({
-            name: "toggledialog",
+            name: "inithelper-toggledialog",
             title: "INITIATIVEHELPER.toggledialog",
             icon: "fas fa-dice-d20",
             toggle: true,
