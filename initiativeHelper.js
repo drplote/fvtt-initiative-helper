@@ -66,7 +66,7 @@ export class InitiativeHelper extends Application {
     }
 
     getCombat(sceneId){
-        let combat = game.combats.find(c => c.scene.id === sceneId && c.isActive && c.started);
+        let combat = game.combats.find(c => c.scene?.id === sceneId && c.isActive && c.started);
         return combat;
     }
 
@@ -77,6 +77,7 @@ export class InitiativeHelper extends Application {
 
     getLatestCombatInit(sceneId){
         let combat = this.getCombat(sceneId);
+        // TODO: not all initiative systems using ascending init. Take that into account
         let maxInit = Math.max(...combat.turns.map(combatant => combatant.initiative));
         return maxInit;
     }
@@ -90,6 +91,8 @@ export class InitiativeHelper extends Application {
         } 
         else if (combat.turn){
             let currentCombatInit = combat.turns[combat.turn]?.initiative;
+
+            // TODO: not all initiative systems using ascending init. Take that into account
             if (initiative < currentCombatInit){
                 ui.notifications.warn(i18n("INITIATIVEHELPER.warning-too-early-init"));
             }
@@ -127,7 +130,7 @@ export class InitiativeHelper extends Application {
     async delayTokenInit(token, longDelayInit){
         let oldInit = longDelayInit ?? this.getTokenInit(token);
         if (oldInit !== null){
-            let newInit = oldInit + 1;
+            let newInit = oldInit + 1;  // TODO: not all initiative systems using ascending init. Take that into account
             await this.updateInitiative(token, newInit);
         }
     }
