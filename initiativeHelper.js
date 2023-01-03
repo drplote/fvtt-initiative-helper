@@ -160,7 +160,7 @@ export class InitiativeHelper extends Application {
                     if (currentInit === null){
                         currentInit = "Unset";
                     }
-                    this.tokenname = controlledToken.data.name;
+                    this.tokenname = controlledToken.name;
                     this.tokenstat = currentInit;
                     this.tokentooltip = `Initiative: ${currentInit}`;
                 }
