@@ -1,4 +1,4 @@
-import { i18n } from "../initiativehelper.js";
+import { i18n } from "./initiativehelper.js";
 
 export const registerSettings = function () {
     let modulename = "initiative-helper";

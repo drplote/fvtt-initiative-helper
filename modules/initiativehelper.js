@@ -1,4 +1,4 @@
-import { registerSettings } from "./modules/settings.js";
+import { registerSettings } from "./settings.js";
 
 export let i18n = key => {
     return game.i18n.localize(key);
